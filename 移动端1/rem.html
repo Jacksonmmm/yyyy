@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      /* rem 单位，根据根节点（html）的字体大小设置单位 */
+      /* 1rem = 18px */
+      font-size: 1rem;
+    }
+
+    .box {
+      font-size: 1.2rem;
+    }
+
+    .p1 {
+      font-size: 1.5rem;
+    }
+  </style>
+  <script src="./jquery-3.6.0.js"></script>
+  <script>
+    $(function () {
+      function setRem() {
+        var clientWidth = $(window).width();
+        var nowRem = (clientWidth / 375 * 10);
+        $("html").css("font-size", parseInt(nowRem, 10) + "px");
+      };
+      setRem();
+      $(function () {
+        var timer;
+        $(window).bind("resize", function () {
+          clearTimeout(timer)
+          timer = setTimeout(function () {
+            setRem();
+          }, 100)
+        })
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div class="box">
+    1234
+  </div>
+  <p class="p1">
+    ppppppppp
+  </p>
+</body>
+
+</html>

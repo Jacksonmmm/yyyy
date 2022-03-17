@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../jquery-3.6.0.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    header{
+      background-color:#e6071b;
+      color: white;
+      text-align: center;
+      line-height: 4rem;
+      position: relative;
+    }
+    .left{
+      position: absolute;
+      left: 1rem;
+      /* top: 50%;
+      transform: translateY(-50%); */
+    }
+    .right{
+      position: absolute;
+      right: 1rem;
+    }
+    .list{
+      padding: 0 1rem;
+    }
+    .item{
+      height: 7rem;
+      padding: 1.5rem 0;
+      /* background-color: pink; */
+      border-bottom: 1px solid #ccc;
+    }
+    .img,.cont-txt{
+      float: left;
+    }
+    .img{
+      width: 7rem;
+      height: 7rem;
+      background: yellow;
+    }
+    .cont-txt{
+      width: 27.5rem;
+      background-color: aqua;
+      margin-left: 1rem;
+    }
+    .title{
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .current{
+      color: red;
+      font-size: 2rem;
+    }
+    .del{
+      font-size: 1.2rem;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <header>
+      浏览记录
+      <span class="left"><</span>
+      <span class="right">清空</span>
+    </header>
+    <div class="list">
+      <div class="item">
+        <div class="img"></div>
+        <div class="cont-txt">
+          <div class="title">口红口红口红口红口红口红口红口红口红口红口红口红口红口红口红口红口红口红</div>
+          <div class="price">
+            <span class="current">￥60.00</span>
+            <del class="del">￥160.00</del>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      function setRem() {
+        var clientWidth = $(window).width();
+        var nowRem = (clientWidth / 375 * 10);
+        $("html").css("font-size", parseInt(nowRem, 10) + "px");
+      };
+      setRem();
+      $(function () {
+        var timer;
+        $(window).bind("resize", function () {
+          clearTimeout(timer)
+          timer = setTimeout(function () {
+            setRem();
+          }, 100)
+        })
+      });
+    });
+
+  </script>
+</body>
+</html>
